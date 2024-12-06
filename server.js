@@ -1,15 +1,15 @@
-var express = require('express');
-var path = require('path');
-var fs = require('fs');
+import express from 'express';
+import { join } from 'path';
+import { readFileSync } from 'fs';
 var app = express();
 
 app.get('/', function (req, res) {
 });
 
-res.sendFile(path.join(__dirname, "index.html"));
+res.sendFile(join(__dirname, "index.html"));
 I
 app.get('/profile-picture', function (req, res) {
-    var img = fs.readFileSync('profile-1.jpg');
+    var img = readFileSync('profile-1.jpg');
     res.writeHead(200, { 'Content-Type': 'image/jpg' }); res.end(img, 'binary');
 });
 
